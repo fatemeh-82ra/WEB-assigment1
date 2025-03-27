@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formula Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h2>Formula Calculation</h2>
+
+<!-- Formula 1: Price Calculation with Discount -->
+<div class="formula-container">
+  <h3>Price Calculation with Discount</h3>
+  <label for="fee">Unit Price</label>
+  <input type="text" id="fee" placeholder="Unit Price">
+  <label for="count">Quantity</label>
+  <input type="text" id="count" placeholder="Quantity">
+  <label for="discount">Discount</label>
+  <input type="text" id="discount" placeholder="Discount">
+  <formula evaluator="count*fee-discount"></formula>
+</div>
+
+<!-- Formula 2: Cubic Equation -->
+<div class="formula-container">
+  <h3>Cubic Equation: f(x) = a * x^3 + b * x^2 + c * x + d</h3>
+  <label for="x">Value of x</label>
+  <input type="text" id="x" placeholder="Enter x">
+  <label for="a">Coefficient a</label>
+  <input type="text" id="a" placeholder="Enter coefficient a">
+  <label for="b">Coefficient b</label>
+  <input type="text" id="b" placeholder="Enter coefficient b">
+  <label for="c">Coefficient c</label>
+  <input type="text" id="c" placeholder="Enter coefficient c">
+  <label for="d">Coefficient d</label>
+  <input type="text" id="d" placeholder="Enter coefficient d">
+  <formula evaluator="a*x^3+b*x^2+c*x+d"></formula>
+</div>
+
+<!-- Formula 3: BMI Calculation -->
+<div class="formula-container">
+  <h3>BMI Calculation</h3>
+  <label for="weight">Weight (kg)</label>
+  <input type="text" id="weight" placeholder="Weight">
+  <label for="height">Height (m)</label>
+  <input type="text" id="height" placeholder="Height">
+  <formula evaluator="weight/(height^2)"></formula>
+</div>
+
+<script src="FormulaClass.js"></script>
+</body>
+</html>
