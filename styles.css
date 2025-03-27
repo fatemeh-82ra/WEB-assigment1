@@ -1,0 +1,75 @@
+body {
+    font-family: 'Times New Roman', sans-serif;
+    padding: 20px;
+    background-color: #faf8f8;
+    background-image: url('srtar.png'); /* Add your image URL here */
+    background-size: contain; /* This will ensure the image covers the entire body */
+    background-position: center center; /* This will center the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    color: #131313;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 40px;
+    color: #131313;
+}
+
+.formula-container {
+    background-color: #cfdae3;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-bottom: 18px;
+    color: #0045af;
+}
+
+label {
+    display: block;
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 96%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #3e3d3d;
+    border-radius: 4px;
+    font-size: 1em;
+    color: #333;
+    transition: border-color 0.3s;
+}
+
+
+formula {
+    display: block; /* Make formula tag block-level to manage spacing better */
+    margin-top: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #131313;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .formula-container {
+        padding: 15px;
+    }
+
+    input {
+        font-size: 0.9em;
+    }
+}
