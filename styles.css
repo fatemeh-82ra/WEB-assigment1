@@ -60,16 +60,16 @@ formula {
     color: #131313;
 }
 
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
+/*@media (max-width: 768px) {*/
+/*    body {*/
+/*        padding: 10px;*/
+/*    }*/
 
-    .formula-container {
-        padding: 15px;
-    }
+/*    .formula-container {*/
+/*        padding: 15px;*/
+/*    }*/
 
-    input {
-        font-size: 0.9em;
-    }
-}
+/*    input {*/
+/*        font-size: 0.9em;*/
+/*    }*/
+/*}*/
