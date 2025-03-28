@@ -1,96 +1,46 @@
 # WEB-assigment1
-Let's dive into the code in much more detail and break it down step by step. I will explain each component of the code, how it works, and the specific role each part plays in building the functionality of the formula calculator.
-
-### 1. **HTML Structure** (Defining the User Interface)
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formula Calculator</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<h2>Formula Calculation</h2>
-
-<!-- Formula 1: Price Calculation with Discount -->
-<div class="formula-container">
-    <h3>Price Calculation with Discount</h3>
-    <label for="fee">Unit Price</label>
-    <input type="text" id="fee" placeholder="Unit Price">
-    <label for="count">Quantity</label>
-    <input type="text" id="count" placeholder="Quantity">
-    <label for="discount">Discount</label>
-    <input type="text" id="discount" placeholder="Discount">
-    <formula evaluator="count*fee-discount"></formula>
-</div>
-
-<!-- Formula 2: Cubic Equation -->
-<div class="formula-container">
-    <h3>Cubic Equation: f(x) = a * x^3 + b * x^2 + c * x + d</h3>
-    <label for="x">Value of x</label>
-    <input type="text" id="x" placeholder="Enter x">
-    <label for="a">Coefficient a</label>
-    <input type="text" id="a" placeholder="Enter coefficient a">
-    <label for="b">Coefficient b</label>
-    <input type="text" id="b" placeholder="Enter coefficient b">
-    <label for="c">Coefficient c</label>
-    <input type="text" id="c" placeholder="Enter coefficient c">
-    <label for="d">Coefficient d</label>
-    <input type="text" id="d" placeholder="Enter coefficient d">
-    <formula evaluator="a*x^3+b*x^2+c*x+d"></formula>
-</div>
-
-<!-- Formula 3: BMI Calculation -->
-<div class="formula-container">
-    <h3>BMI Calculation</h3>
-    <label for="weight">Weight (kg)</label>
-    <input type="text" id="weight" placeholder="Weight">
-    <label for="height">Height (m)</label>
-    <input type="text" id="height" placeholder="Height">
-    <formula evaluator="weight/(height^2)"></formula>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
-```
-
-#### **Detailed Explanation**:
-
-1. **`<!DOCTYPE html>`**:
-   - This declaration defines the document as an HTML5 document, allowing the browser to interpret it according to the HTML5 standard.
-   
-2. **`<html>` Tag**:
-   - This tag encloses the entire HTML document, with the `lang="en"` attribute indicating that the content is in English.
-
-3. **`<head>` Section**:
-   - **`<meta charset="UTF-8">`**: Ensures the document is interpreted using the UTF-8 character set, which supports a wide range of characters (such as special characters and accents).
-   - **`<meta name="viewport" content="width=device-width, initial-scale=1.0">`**: This line is essential for making the page responsive on mobile devices. It ensures that the page width adjusts to the screen width of the device.
-   - **`<title>`**: The title of the page displayed on the browser tab.
-   - **`<link rel="stylesheet" href="styles.css">`**: Links to the external CSS file for styling the HTML elements.
-
-4. **`<body>` Section**:
-   - **`<h2>`**: The main heading for the page, giving the user a sense of the purpose of the page ("Formula Calculation").
-   
-5. **Formula Containers**:
-   - Each formula (e.g., Price Calculation with Discount, Cubic Equation, BMI Calculation) is enclosed in a `<div class="formula-container">`. This is where the user will input data and the result will be displayed.
-   - **Input Fields**: Each formula has its own set of input fields where the user provides data (e.g., `Unit Price`, `Quantity`, `Weight`, etc.).
-     - For example, in the Price Calculation with Discount section:
-       ```html
-       <label for="fee">Unit Price</label>
-       <input type="text" id="fee" placeholder="Unit Price">
-       ```
-     - This defines an input field for the user to enter the unit price, identified by the ID `fee`.
-   - **`<formula>` Tags**: These tags display the calculated result. The `evaluator` attribute of each `<formula>` tag contains a string representing the formula to be evaluated (e.g., `count*fee-discount`).
+# WEB-assigment1
 
 ---
 
-### 2. **JavaScript Logic** (FormulaCalculator Class)
+### 1. **ساختار HTML** (تعریف رابط کاربری)
 
-The JavaScript is responsible for handling the user interactions and performing the calculations dynamically when the user inputs values into the fields.
+
+#### **توضیح دقیق**:
+
+1. **`<!DOCTYPE html>`**:
+    - این اعلان سند را به‌عنوان یک سند HTML5 تعریف می‌کند که به مرورگر این امکان را می‌دهد که آن را مطابق با استاندارد HTML5 تفسیر کند.
+
+2. **`<html>` تگ**:
+    - این تگ تمام سند HTML را در بر می‌گیرد و ویژگی `lang="en"` به معنای این است که محتوای صفحه به زبان انگلیسی است.
+
+3. **بخش `<head>`**:
+    - **`<meta charset="UTF-8">`**: این خط از تگ متا، اطمینان حاصل می‌کند که سند با استفاده از مجموعه کاراکتر UTF-8 تفسیر می‌شود که از طیف گسترده‌ای از نویسه‌ها (مانند نویسه‌های خاص و علائم) پشتیبانی می‌کند.
+    - **`<meta name="viewport" content="width=device-width, initial-scale=1.0">`**: این خط برای ریسپانسیو کردن صفحه در دستگاه‌های موبایل است و اطمینان می‌دهد که عرض صفحه به عرض صفحه نمایش دستگاه تطبیق داده شود.
+    - **`<title>`**: عنوان صفحه که در تب مرورگر نمایش داده می‌شود.
+    - **`<link rel="stylesheet" href="styles.css">`**: فایل CSS خارجی را لینک می‌دهد تا ظاهر عناصر HTML را تنظیم کند.
+
+4. **بخش `<body>`**:
+    - **`<h2>`**: عنوان اصلی صفحه که به کاربر اطلاعات می‌دهد که این صفحه برای انجام محاسبات فرمول است.
+
+5. **کانتینرهای فرمول**:
+    - هر فرمول (مانند محاسبه قیمت با تخفیف، معادله مکعبی، و محاسبه BMI) در یک `<div class="formula-container">` قرار دارد. اینجا جایی است که کاربر مقادیر را وارد می‌کند و نتیجه نمایش داده می‌شود.
+    - **فیلدهای ورودی**: هر فرمول فیلدهای ورودی خود را دارد که کاربر می‌تواند مقادیر را وارد کند (مانند `قیمت واحد`، `تعداد`، `وزن` و غیره).
+        - برای مثال، در بخش "محاسبه قیمت با تخفیف":
+          ```html
+          <label for="fee">Unit Price</label>
+          <input type="text" id="fee" placeholder="Unit Price">
+          ```
+        - این فیلد ورودی است که به کاربر اجازه می‌دهد قیمت واحد را وارد کند و شناسه آن `fee` است.
+    - **تگ‌های `<formula>`**: این تگ‌ها برای نمایش نتیجه محاسبه شده استفاده می‌شوند. ویژگی `evaluator` هر تگ `<formula>` شامل رشته‌ای است که فرمول برای انجام محاسبه بر اساس مقادیر ورودی است.
+
+---
+
+### 2. **منطق جاوا اسکریپت (کلاس FormulaCalculator)**
+
+جاوا اسکریپت مسئولیت پردازش تعاملات کاربر و انجام محاسبات به صورت داینامیک زمانی که کاربر مقادیر را در فیلدهای ورودی وارد می‌کند را بر عهده دارد.
+
+#### کلاس `FormulaCalculator`:
 
 ```javascript
 class FormulaCalculator {
@@ -110,14 +60,16 @@ class FormulaCalculator {
 }
 ```
 
-#### **Detailed Explanation**:
+#### **توضیح دقیق**:
 
-1. **`constructor()`**:
-   - The constructor is the initial method that runs when an instance of the `FormulaCalculator` class is created.
-   - **`this.inputs`**: Selects all the `<input>` elements on the page. These are the fields where the user inputs values.
-   - **`this.formulas`**: Selects all the `<formula>` elements where the results will be displayed.
-   - **Event Listeners**: For each input field, an event listener is added to trigger the `updateFormulas` method when any input changes (via the `input` event).
-   - **`updateFormulas()`** is also called immediately after the page loads to ensure that any pre-existing values (if any) are calculated on load.
+1. **تعریف کلاس**:
+    - کلاس `FormulaCalculator` مسئول انجام محاسبات فرمول و به‌روزرسانی نتایج است.
+
+2. **`constructor()`**:
+    - **`this.inputs`**: تمام عناصر `<input>` صفحه را انتخاب می‌کند. این‌ها فیلدهایی هستند که کاربر مقادیر را وارد می‌کند.
+    - **`this.formulas`**: تمام عناصر `<formula>` صفحه را انتخاب می‌کند که نتایج در آن‌ها نمایش داده خواهد شد.
+    - **اضافه کردن شنونده رویداد**: برای هر فیلد ورودی یک شنونده رویداد اضافه می‌شود که به محض تغییر مقدار فیلد، متد `updateFormulas()` را فراخوانی می‌کند.
+    - **`updateFormulas()`** بلافاصله پس از بارگذاری صفحه فراخوانی می‌شود تا اطمینان حاصل شود که اگر مقادیری قبلاً وارد شده باشد، فرمول‌ها به‌روز شوند.
 
 ---
 
@@ -135,11 +87,14 @@ updateFormulas() {
 }
 ```
 
-#### **Explanation**:
+#### **توضیح دقیق**:
+
 1. **`updateFormulas()`**:
-   - This method iterates through each `<formula>` element and retrieves its `evaluator` attribute (which contains the formula to be calculated).
-   - **`this.calculateFormula(evaluator)`**: The formula is passed to the `calculateFormula` method, which computes the result based on the input values.
-   - **Error Handling**: If an error occurs during the calculation (for example, if the formula is incorrect), it catches the error and displays "Formula Invalid".
+    - این متد هر بار که فیلد ورودی تغییر می‌کند فراخوانی می‌شود.
+    - برای هر تگ `<formula>` در صفحه، ویژگی `evaluator` را می‌گیرد که شامل فرمول محاسبه است.
+    - سپس از متد `calculateFormula()` برای محاسبه نتیجه استفاده می‌کند.
+    - اگر نتیجه معتبر باشد، آن را در تگ `<formula>` نمایش می‌دهد. در غیر این صورت، عبارت "Formula Invalid" نشان داده می‌شود.
+    - اگر خطایی در هنگام محاسبه رخ دهد (مثل فرمول نادرست)، پیام "Formula Invalid" نمایش داده می‌شود.
 
 ---
 
@@ -168,17 +123,17 @@ calculateFormula(evaluator) {
 }
 ```
 
-#### **Explanation**:
+#### **توضیح دقیق**:
+
 1. **`calculateFormula()`**:
-   - **BMI Special Case**: Before evaluating the formula, it checks if the evaluator is for BMI (`weight/(height^2)`). If the height is in centimeters (whole number without decimal), it immediately returns "Formula Invalid".
-   - **Variable Replacement**: The method then extracts the variables (like `weight`, `height`, `count`, `fee`, etc.) from the `evaluator` string and replaces them with the actual values from the input fields.
-     - **Example**: If the `evaluator` is `"count*fee-discount"`, it will replace `count` with the value of the `#count` input field.
-   - **Math Operators**: The method replaces the `^` operator with `**` to make it compatible with JavaScript's exponentiation syntax (since `^` is not supported in JavaScript as a power operator).
-   - **Evaluation**: The `eval()` function is used to calculate the final result by evaluating the string as JavaScript code.
+    - این متد فرمول داده‌شده را محاسبه می‌کند.
+    - برای فرمول BMI (`weight/(height^2)`)، بررسی می‌کند که آیا ارتفاع به‌صورت سانتی‌متر (عدد صحیح بدون نقطه اعشاری) وارد شده است. اگر بله، "Formula Invalid" برمی‌گرداند.
+    - سایر فرمول‌ها با جایگزینی نام متغیرها (مانند `count`, `fee`, `discount`) با مقادیر وارد شده در فیلدهای ورودی انجام می‌شوند.
+    - `eval()` برای ارزیابی فرمول استفاده می‌شود.
 
 ---
 
-### 3. **CSS Styling**
+### 3. **استایل CSS**
 
 ```css
 body {
@@ -193,8 +148,9 @@ body {
 }
 ```
 
-#### **Explanation**:
-1. **Background**: The body of the page has a background image (`star.png`) that is centered and does not repeat. The background color is a soft light gray (`#faf8f8`), and the text color is dark (`#131313`), which ensures good readability.
+#### **توضیح دقیق**:
+
+1. **پس‌زمینه**: پس‌زمینه بدنه صفحه یک تصویر (star.png) است که به صورت مرکز چین و بدون تکرار قرار می‌گیرد. رنگ پس‌زمینه به صورت نرمی خاکی است و رنگ متن تیره است تا خوانایی را تضمین کند.
 
 ---
 
@@ -212,17 +168,15 @@ body {
 }
 ```
 
-#### **Explanation**:
-1. **Formula Container**: This section styles the containers that hold each formula input and the result display:
-   - **Background Color**: `#cfdae3` is a soft pastel color to differentiate the formula containers from the rest of the page.
-   - **Rounded Corners**: The `border-radius` property rounds the corners of the container for a softer look.
-   - **Box Shadow**: The `box-shadow` creates a subtle shadow effect for depth.
-   - **Padding and Margin**: Ensures there is space inside and around each container. The `margin-left` and `margin-right` set the container to be centered on the page.
+#### **توضیح دقیق**:
+
+1. **کانتینر فرمول**: این بخش ظاهر کانتینرهایی را که فرمول‌ها و نتایج در آن‌ها نمایش داده می‌شود، مشخص می‌کند:
+    - **رنگ پس‌زمینه**: رنگ ملایم سبز کمرنگ برای تمایز بخش فرمول‌ها از سایر بخش‌ها.
+    - **گوشه‌های گرد**: با استفاده از `border-radius` گوشه‌ها نرم‌تر شده‌اند.
+    - **سایه**: برای ایجاد عمق از `box-shadow` استفاده شده است.
+    - **فضاها**: از `padding` و `margin` برای ایجاد فضا درون و اطراف کانتینر استفاده می‌شود.
 
 ---
 
-### Conclusion:
-
-This project is an interactive, dynamic calculator where the user inputs values, and formulas are evaluated and displayed instantly. The logic is encapsulated in a JavaScript class (`FormulaCalculator`), which handles the formula evaluation, dynamic updating of the results, and special cases (like checking for height in centimeters for BMI). The HTML provides the structure, and the CSS ensures a clean and responsive user interface.
-
-This approach leverages object-oriented programming (OOP) principles such as encapsulation and modularity, making the code reusable and maintainable.
+### نتیجه‌گیری:
+این پروژه یک ماشین‌حساب داینامیک است که فرمول‌ها را به‌صورت زنده محاسبه می‌کند. منطق برنامه در کلاس `FormulaCalculator` قرار دارد و از روش‌های برنامه‌نویسی شی‌گرا برای اطمینان از مقیاس‌پذیری و نگهداری آسان استفاده شده است. این کد به راحتی قابل گسترش است و می‌توان فرمول‌های جدید به آن اضافه کرد.
